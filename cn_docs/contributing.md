@@ -1,4 +1,3 @@
-```markdown
 # 贡献指南
 
 本章节专为希望贡献代码的开发者准备，关于 `pycrdt-websocket` 的贡献指南。
