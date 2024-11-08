@@ -1,26 +1,27 @@
 # Pycrdt-websocket
 
-Pycrdt-websocket is an async WebSocket connector for pycrdt.
+Pycrdt-websocket 是一个用于 pycrdt 的异步 WebSocket 连接器。
 
-[![Build Status](https://github.com/jupyter-server/pycrdt-websocket/workflows/CI/badge.svg)](https://github.com/jupyter-server/pycrdt-websocket/actions)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
----
-
-**Documentation**: <a href="https://jupyter-server.github.io/pycrdt-websocket" target="_blank">https://jupyter-server.github.io/pycrdt-websocket</a>
-
-**Source Code**: <a href="https://github.com/jupyter-server/pycrdt-websocket" target="_blank">https://github.com/jupyter-server/pycrdt-websocket</a>
+[![构建状态](https://github.com/jupyter-server/pycrdt-websocket/workflows/CI/badge.svg)](https://github.com/jupyter-server/pycrdt-websocket/actions)
+[![代码风格: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ---
 
-Pycrdt-websocket is a Python library for building WebSocket servers and clients that connect and synchronize shared documents.
-It can be used to create collaborative web applications.
+**文档**: <a href="https://hellowac.github.io/pycrdt-websocket-zh-cn" target="_blank">https://jupyter-server.github.io/pycrdt-websocket</a>
 
-The following diagram illustrates a typical architecture. The goal is to share a document among several clients.
+**源代码**: <a href="https://github.com/hellowac/pycrdt-websocket-zh-cn" target="_blank">https://github.com/jupyter-server/pycrdt-websocket</a>
 
-Each client has an instance of a `Doc`, representing their view of a document. A shared document also lives in a [room](./reference/Room.md) on the server side. Conceptually, a room can be seen as the place where clients collaborate on a document. The WebSocket to which a client connects points to the corresponding room through the endpoint path. In the example below, clients A and B connect to a WebSocket at path `room-1`, and thus both clients find themselves in a room called `room-1`. All the `Doc` synchronization logic is taken care of by the [WebsocketProvider](./reference/WebSocket_provider.md).
+---
 
-Each update to a shared document can be persisted to disk using a [store](./reference/Store.md), which can be a file or a database.
+Pycrdt-websocket 是一个用于构建 WebSocket 服务器和客户端的 Python 库，旨在连接和同步共享文档。
+它可以用来创建协作式的 Web 应用程序。
+
+以下图示展示了一个典型的架构。目标是让多个客户端共享一个文档。
+
+每个客户端都有一个 `Doc` 实例，表示其视图中的文档。共享文档也在服务器端的 [room](./reference/Room.md) 中存在。从概念上讲，room 是客户端共同协作文档的地方。客户端连接的 WebSocket 通过端点路径指向相应的 room。在下面的示例中，客户端 A 和 B 连接到路径为 `room-1` 的 WebSocket，因此两者都进入了一个名为 `room-1` 的房间。所有 `Doc` 同步的逻辑由 [WebsocketProvider](./reference/WebSocket_provider.md) 处理。
+
+每次更新共享文档时，可以使用 [store](./reference/Store.md) 将其持久化到磁盘，该存储可以是文件或数据库。
+
 ```mermaid
 flowchart TD
     classDef room1 fill:#f96
@@ -37,4 +38,17 @@ flowchart TD
     D <-..-> room2
     room1 ---> store1[(Store)]
     room2 ---> store2[(Store)]
+```
+
+
+## 文档
+
+针对中文版
+
+```shell
+# 调试
+mkdocs serve -f mkdocs.cn.yml serve
+
+# 部署到github pages
+mkdocs build -f mkdocs.cn.yml gh-deploy
 ```
